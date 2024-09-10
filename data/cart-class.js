@@ -1,15 +1,14 @@
 class Cart{
-
     cartItems;
-    localStorageKey;
+    #localStorageKey;
 
     constructor(localStorageKey){
-        this.localStorageKey = localStorageKey;
+        this.#localStorageKey = localStorageKey;
         this.loadFromStorage();
     }
 
     loadFromStorage(){
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
 
         if(!this.cartItems){
             this.cartItems = [{
@@ -25,7 +24,7 @@ class Cart{
     }
 
     saveToStorage(){
-        localStorage.setItem(this.localStorageKey, JSON.stringify(cart));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
 
     addToCart(productId){
@@ -49,7 +48,7 @@ class Cart{
             });
         }
     
-        saveToStorage();
+        this.saveToStorage();
     }
 
     removeFromCart(productId){
@@ -62,7 +61,7 @@ class Cart{
         });
     
         this.cartItems = newCart;
-        saveToStorage();
+        this.saveToStorage();
     }
 
     updateDeliveryDate(productId, deliveryOptionId){
@@ -79,7 +78,15 @@ class Cart{
     
         matchingItem.deliveryOptionId = deliveryOptionId;
     
-        saveToStorage();
+        this.saveToStorage();
     }
 
 };
+
+const dailyCart = new Cart('daily');
+console.log(dailyCart);
+dailyCart.addToCart('3ebe75dc-64d2-4137-8860-1f5a963e534b');
+console.log(dailyCart);
+
+const buissCart = new Cart('buiss');
+console.log(buissCart);
