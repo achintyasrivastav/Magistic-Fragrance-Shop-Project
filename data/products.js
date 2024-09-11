@@ -169,7 +169,7 @@ export const products = [
   },
   {
     id: "5968897c-4d27-4872-89f6-5bcb052746d7",
-    image: "images/products/women-chiffon-beachwear-coverup-black.jpg",
+    image: "images/products2/pic11.jpeg",
     name: "Women's Chiffon Beachwear Cover Up - Black",
     rating: {
       stars: 4.5,
@@ -188,7 +188,7 @@ export const products = [
   },
   {
     id: "aad29d11-ea98-41ee-9285-b916638cac4a",
-    image: "images/products/round-sunglasses-black.jpg",
+    image: "images/products2/pic12.jpeg",
     name: "Round Sunglasses",
     rating: {
       stars: 4.5,
@@ -202,7 +202,7 @@ export const products = [
   },
   {
     id: "04701903-bc79-49c6-bc11-1af7e3651358",
-    image: "images/products/women-beach-sandals.jpg",
+    image:  "images/products2/pic13.jpeg",
     name: "Women's Two Strap Buckle Sandals - Tan",
     rating: {
       stars: 4.5,
@@ -219,7 +219,7 @@ export const products = [
   },
   {
     id: "901eb2ca-386d-432e-82f0-6fb1ee7bf969",
-    image: "images/products/blackout-curtain-set-beige.webp",
+    image:  "images/products2/pic14.jpeg",
     name: "Blackout Curtains Set 4-Pack - Beige",
     rating: {
       stars: 4.5,
@@ -234,7 +234,7 @@ export const products = [
   },
   {
     id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
-    image: "images/products/men-slim-fit-summer-shorts-gray.jpg",
+    image:  "images/products2/pic15.jpeg",
     name: "Men's Slim-Fit Summer Shorts",
     rating: {
       stars: 4,
@@ -249,7 +249,7 @@ export const products = [
   },
   {
     id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
-    image: "images/products/electric-glass-and-steel-hot-water-kettle.webp",
+    image:  "images/products2/pic16.jpeg",
     name: "Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter",
     rating: {
       stars: 5,
@@ -264,7 +264,7 @@ export const products = [
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
-    image: "images/products/facial-tissue-2-ply-18-boxes.jpg",
+    image:  "images/products2/pic17.jpeg",
     name: "Ultra Soft Tissue 2-Ply - 18 Box",
     rating: {
       stars: 4,
@@ -281,7 +281,7 @@ export const products = [
   },
   {
     id: "a82c6bac-3067-4e68-a5ba-d827ac0be010",
-    image: "images/products/straw-sunhat.webp",
+    image:  "images/products2/pic18.jpeg",
     name: "Straw Lifeguard Sun Hat",
     rating: {
       stars: 4,
@@ -297,7 +297,7 @@ export const products = [
   },
   {
     id: "e4f64a65-1377-42bc-89a5-e572d19252e2",
-    image: "images/products/sky-flower-stud-earrings.webp",
+    image:  "images/products2/pic19.jpeg",
     name: "Sterling Silver Sky Flower Stud Earrings",
     rating: {
       stars: 4.5,
@@ -312,7 +312,7 @@ export const products = [
   },
   {
     id: "b0f17cc5-8b40-4ca5-9142-b61fe3d98c85",
-    image: "images/products/women-stretch-popover-hoodie-black.jpg",
+    image:  "images/products2/pic20.jpg",
     name: "Women's Stretch Popover Hoodie",
     rating: {
       stars: 4.5,
@@ -641,37 +641,6 @@ export const products = [
       "baking",
       "cookware",
       "kitchen"
-    ]
-  },
-  {
-    id: "aaa65ef3-8d6f-4eb3-bc9b-a6ea49047d8f",
-    image: "images/products/kitchen-paper-towels-30-pack.jpg",
-    name: "2-Ply Kitchen Paper Towels - 30 Pack",
-    rating: {
-      stars: 4.5,
-      count: 1045
-    },
-    priceCents: 5799,
-    keywords: [
-      "kitchen",
-      "kitchen towels",
-      "tissues"
-    ]
-  },
-  {
-    id: "bc2847e9-5323-403f-b7cf-57fde044a955",
-    image: "images/products/men-cozy-fleece-zip-up-hoodie-red.jpg",
-    name: "Men's Full-Zip Hooded Fleece Sweatshirt",
-    rating: {
-      stars: 4.5,
-      count: 3157
-    },
-    priceCents: 2400,
-    keywords: [
-      "sweaters",
-      "hoodies",
-      "apparel",
-      "mens"
     ]
   }
 ].map((productDetail) => {
