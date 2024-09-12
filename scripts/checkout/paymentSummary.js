@@ -71,5 +71,13 @@ export function renderPaymentSummary(){
     `
 
     document.querySelector('.js-payment-summary').innerHTML = html;
+
+    let nhtml = `
+     Checkout (<a class="return-to-home-link"
+            href="amazon.html">${totalItems} items</a>)
+    `
+
+    document.querySelector('.checkout-header-middle-section')
+     .innerHTML = nhtml;
 }
 

@@ -51,10 +51,12 @@
 
 .cart-item-container {
   margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(91, 162, 255, 0.8);
 }
 
 .payment-summary {
   padding-bottom: 5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(235, 157, 233, 0.8);
 }
 
 @media (max-width: 1000px) {

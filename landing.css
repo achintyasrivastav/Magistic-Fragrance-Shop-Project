@@ -13,7 +13,6 @@
   }
 
   .nav {
-    background: rgb(172, 228, 244);
     display: flex;
     justify-content: space-between;
     align-items: center;
