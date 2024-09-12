@@ -30,11 +30,6 @@ products.forEach((product) => {
 
             <div class="product-spacer"></div>
 
-            <div class="added-to-cart">
-                <img src="images/icons/checkmark.png">
-                Added
-            </div>
-
             <button class="add-to-cart-button button-primary js-add-to-cart"
             data-product-id = "${product.id}">
                 Add to Cart
@@ -69,3 +64,24 @@ document.querySelectorAll('.js-add-to-cart')
     });
    
 });
+
+window.onload = function () {
+    // Typewriter effect for the heading
+    gsap.to(".gsap-heading", {
+      duration: 2.5, // The time it takes for the whole text to appear
+      width: "100%", // Reveal the full width of the heading
+      ease: "steps(20)", // Typewriter steps animation
+      onComplete: () => {
+        // Blink the cursor effect
+        gsap.to(".gsap-heading", { borderRightColor: "transparent", repeat: -1, yoyo: true, duration: 0.6 });
+      }
+    });
+
+    // Scale up the subtext after the heading animation
+    gsap.to(".gsap-subtext", {
+      duration: 1.5,
+      scale: 1, // Scale up to its original size
+      delay: 3, // Delayed to start after the heading
+      ease: "elastic.out(1, 0.3)" // Elastic bounce effect
+    });
+  }

@@ -1,14 +1,18 @@
 body{
-  
+  background-color: 0;
 }
 
 .main {
-  margin-top: 60px;
-  padding: 50px;
+  margin-top: 100px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .products-grid {
   display: grid;
+  padding-right: 100px;
+  padding-left: 100px;
+
 
   /* - In CSS Grid, 1fr means a column will take up the
        remaining space in the grid.
@@ -20,6 +24,8 @@ body{
        repeat(...) is a special property that works with
        display: grid; */
   grid-template-columns: repeat(8, 1fr);
+  column-gap: 80px;
+  row-gap: 80px;
 }
 
 /* @media is used to create responsive design (making the
@@ -36,7 +42,7 @@ body{
    less, we will divide the grid into 4 columns. */
 @media (max-width: 1600px) {
   .products-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -71,18 +77,25 @@ body{
 }
 
 .product-container {
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 25px;
   padding-left: 25px;
   padding-right: 25px;
 
-  border-left: 1px solid rgb(231, 231, 231);
-  border-right: 1px solid rgb(231, 231, 231);
-  border-bottom: 1px solid rgb(231, 231, 231);
-  border-top: 1px solid rgb(231, 231, 231);
+  border-left: 1px solid rgb(136, 184, 232);
+  border-right: 1px solid  rgb(136, 184, 232);
+  border-top: 1px solid  rgb(136, 184, 232);
+  border-bottom: 1px solid  rgb(136, 184, 232);
+
+  border-radius: 2px;
 
   display: flex;
   flex-direction: column;
+}
+
+.product-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(91, 162, 255, 0.8); /* Adding orange glow */
 }
 
 .product-image-container {
@@ -137,27 +150,39 @@ body{
   flex: 1;
 }
 
-.added-to-cart {
-  color: rgb(6, 125, 98);
-  font-size: 16px;
-
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
-  opacity: 0;
-}
-
 .added-to-cart img {
   height: 20px;
   margin-right: 5px;
 }
 
 .add-to-cart-button {
+  margin-top: 5px;
   width: 100%;
   padding: 8px;
   border-radius: 50px;
+}
+
+.animation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  text-align: center;
+}
+
+.gsap-heading {
+  font-size: 3rem;
+  color: #5c005c;
+  margin-bottom: 20px;
+  overflow: hidden; /* Needed for the typewriter effect */
+  white-space: nowrap; /* Prevents text wrapping */
+  border-right: 3px solid; /* Creates the blinking cursor effect */
+  width: 0; /* Starts with no visible text */
+}
+
+.gsap-subtext {
+  font-size: 1.5rem;
+  color: #a800a8;
+  transform: scale(0); 
 }
