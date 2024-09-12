@@ -1,17 +1,14 @@
-body{
-  background-color: 0;
-}
 
 .main {
   margin-top: 100px;
-  padding-left: 200px;
-  padding-right: 200px;
 }
 
 .products-grid {
   display: grid;
   padding-right: 100px;
   padding-left: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
 
 
   /* - In CSS Grid, 1fr means a column will take up the
@@ -74,6 +71,10 @@ body{
   .products-grid {
     grid-template-columns: 1fr;
   }
+}
+
+#product-section{
+  background: beige;
 }
 
 .product-container {
