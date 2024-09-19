@@ -1,69 +1,74 @@
-import { products } from '../data/products.js';
+import { products, loadProducts} from '../data/products.js';
 import {cart, addToCart} from '../data/cart.js';
 import { formatCurrency } from './utils/money.js';
 
-let productHTML = '';
+loadProducts(renderProductsGrid); 
 
-products.forEach((product) => {
-    productHTML +=  `
-        <div class="product-container">
-            <div class="product-image-container">
-                <img class="product-image"
-                src="${product.image}">
-            </div>
+function renderProductsGrid(){
 
-            <div class="product-name limit-text-to-2-lines">
-                ${product.name}
-            </div>
+    let productHTML = '';
 
-            <div class="product-rating-container">
-                <img class="product-rating-stars"
-                src="images/ratings/rating-${product.rating.stars*10}.png">
-                <div class="product-rating-count link-primary">
-                ${product.rating.count}
+    products.forEach((product) => {
+        productHTML +=  `
+            <div class="product-container">
+                <div class="product-image-container">
+                    <img class="product-image"
+                    src="${product.image}">
                 </div>
-            </div>
 
-            <div class="product-price">
-                $${formatCurrency(product.priceCents)}
-            </div>
+                <div class="product-name limit-text-to-2-lines">
+                    ${product.name}
+                </div>
 
-            <div class="product-spacer"></div>
+                <div class="product-rating-container">
+                    <img class="product-rating-stars"
+                    src="images/ratings/rating-${product.rating.stars*10}.png">
+                    <div class="product-rating-count link-primary">
+                    ${product.rating.count}
+                    </div>
+                </div>
 
-            <button class="add-to-cart-button button-primary js-add-to-cart"
-            data-product-id = "${product.id}">
-                Add to Cart
-            </button>
-        </div>`;
+                <div class="product-price">
+                    $${formatCurrency(product.priceCents)}
+                </div>
 
-    console.log(productHTML);
-});
+                <div class="product-spacer"></div>
 
-document.querySelector('.js-products-grid')
- .innerHTML = productHTML;
+                <button class="add-to-cart-button button-primary js-add-to-cart"
+                data-product-id = "${product.id}">
+                    Add to Cart
+                </button>
+            </div>`;
 
-function updateCartQuantity(){
-    let cartQuantity = 0;
-    cart.forEach((cartItem) => {
-        cartQuantity += cartItem.quantity;
+        console.log(productHTML);
     });
 
-    document.querySelector('.cart-quantity')
-        .innerHTML = cartQuantity;
+    document.querySelector('.js-products-grid')
+     .innerHTML = productHTML;
+
+    function updateCartQuantity(){
+        let cartQuantity = 0;
+        cart.forEach((cartItem) => {
+            cartQuantity += cartItem.quantity;
+        });
+
+        document.querySelector('.cart-quantity')
+            .innerHTML = cartQuantity;
+    }
+
+    document.querySelectorAll('.js-add-to-cart')
+    .forEach((button) => {
+        button.addEventListener('click', () =>{
+            
+            const productId = button.dataset.productId;
+            
+            addToCart(productId);
+            updateCartQuantity();
+            
+        });
+    
+    });
 }
-
-document.querySelectorAll('.js-add-to-cart')
- .forEach((button) => {
-    button.addEventListener('click', () =>{
-        
-        const productId = button.dataset.productId;
-        
-        addToCart(productId);
-        updateCartQuantity();
-         
-    });
-   
-});
 
 window.onload = function () {
     // Typewriter effect for the heading

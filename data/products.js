@@ -15,6 +15,26 @@ class Product{
 }
 
 
+export let products = [];
+
+export function loadProducts(displayProducts){
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetail) => {
+      return new Product(productDetail);
+    });
+
+    console.log(products);
+
+    displayProducts();
+  });
+
+  xhr.open('GET', 'http://localhost:3003/productlist');
+  xhr.send();
+}
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -629,4 +649,4 @@ export const products = [
   }
 ].map((productDetail) => {
   return new Product(productDetail);
-})
+})*/
