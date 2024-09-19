@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const db = require('../backend/db');
+
 // Middleware
 app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json()); // Parse JSON request bodies
