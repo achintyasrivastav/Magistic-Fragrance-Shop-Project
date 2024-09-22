@@ -1,14 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@500&display=swap');
 
-.main {
-  margin-top: 100px;
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --primary-black: #000000;
+  --secondary-black: #101010;
+  --primary-white: #FFFFFF;
+  --secondary-white: #F0F0F0;
+  --primary-pink: #EFC3C5;
+  --primary-green: #E2F2B0;
+}
+
+body{
+  background: var(--primary-black);
+}
+.main{
+  margin-top: 50px;
 }
 
 .products-grid {
+  margin-top: 50px;
+}
+h2{
+  color: var(--primary-green);
+  font-size: 4rem;
+  font-family: "Allura", cursive;
+  text-align: center;
+}
+
+
+.products-grid {
   display: grid;
-  padding-right: 100px;
-  padding-left: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 80px;
+  row-gap: 80px;
 
 
   /* - In CSS Grid, 1fr means a column will take up the
@@ -20,9 +48,6 @@
        8 times (instead of typing out "1fr" 8 times).
        repeat(...) is a special property that works with
        display: grid; */
-  grid-template-columns: repeat(8, 1fr);
-  column-gap: 80px;
-  row-gap: 80px;
 }
 
 /* @media is used to create responsive design (making the
@@ -31,7 +56,7 @@
    will divide the grid into 7 columns instead of 8. */
 @media (max-width: 2000px) {
   .products-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -39,13 +64,13 @@
    less, we will divide the grid into 4 columns. */
 @media (max-width: 1600px) {
   .products-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 1300px) {
   .products-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -65,11 +90,21 @@
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  h2{
+    margin-left: 50px;
+  }
 }
 
 @media (max-width: 450px) {
   .products-grid {
-    grid-template-columns: 1fr;
+    row-gap: 40px;
+    column-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .product-name{
+    font-size: .3rem;
+    text-overflow: clip;
   }
 }
 
@@ -79,10 +114,10 @@
   padding-left: 25px;
   padding-right: 25px;
 
-  border-left: 1px solid rgb(136, 184, 232);
-  border-right: 1px solid  rgb(136, 184, 232);
-  border-top: 1px solid  rgb(136, 184, 232);
-  border-bottom: 1px solid  rgb(136, 184, 232);
+  border-left: 1px solid var(--primary-white);
+  border-right: 1px solid var(--primary-white);
+  border-top: 1px solid var(--primary-white);
+  border-bottom: 1px solid var(--primary-white);
 
   border-radius: 2px;
 
@@ -92,7 +127,8 @@
 
 .product-container:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(91, 162, 255, 0.8); /* Adding orange glow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 30px rgba(229, 232, 235, 0.8); 
+  background: var(--secondary-black);
 }
 
 .product-image-container {
@@ -115,6 +151,8 @@
 .product-name {
   height: 40px;
   margin-bottom: 5px;
+  color: var(--primary-white);
+  font-size: .8rem;
 }
 
 .product-rating-container {
@@ -137,6 +175,7 @@
 .product-price {
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--primary-white);
 }
 
 .product-quantity-container {

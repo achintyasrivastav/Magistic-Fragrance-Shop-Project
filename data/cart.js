@@ -53,6 +53,20 @@ export function removeFromCart(productId){
     saveToStorage();
 }
 
+export function updateCartQuantity(productId){
+    console.log('Bunny');
+    cart.forEach((cartItem) => {
+
+        if(cartItem.productId === productId){
+            console.log(cartItem.quantity);
+            cartItem.quantity += 1;
+            console.log(cartItem.quantity);
+        }
+    });
+
+    saveToStorage();
+}
+
 export function updateDeliveryDate(productId, deliveryOptionId){
     let matchingItem;
 

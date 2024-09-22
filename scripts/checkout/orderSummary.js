@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateDeliveryDate} from "../../data/cart.js";
+import { cart, removeFromCart, updateCartQuantity, updateDeliveryDate} from "../../data/cart.js";
 import{ products } from "../../data/products.js"
 import { formatCurrency } from "../utils/money.js";
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -54,7 +54,7 @@ export function renderOrderSummary() {
 
                 <div class="cart-item-details">
                 <div class="product-name">
-                    ${matchingProduct.name};
+                    ${matchingProduct.name}
                 </div>
                 <div class="product-price">
                     $${formatCurrency(matchingProduct.priceCents)}
@@ -63,7 +63,7 @@ export function renderOrderSummary() {
                     <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
-                    <span class="update-quantity-link link-primary">
+                    <span class="update-quantity-link link-primary js-update-link" data-product-id = "${matchingProduct.id}">
                     Update
                     </span>
                     <span class = "delete-quantity-link link-primary 
@@ -144,6 +144,23 @@ export function renderOrderSummary() {
 
     });
 
+    
+    document.querySelectorAll('.js-update-link')
+     .forEach((link) =>{
+
+        link.addEventListener('click', () =>{
+            const productId = link.dataset.productId;
+
+            console.log(productId);
+            updateCartQuantity(productId);
+
+            renderOrderSummary();
+            renderPaymentSummary();
+
+            console.log('OK');
+        });
+     });
+
     document.querySelectorAll('.js-delivery-option')
     .forEach((element) =>{
 
@@ -180,7 +197,7 @@ export function renderOrderSummary() {
 }
 
 renderOrderSummary();
-// maybe u forget : so i put the event listners in the function by 
+// maybe u forget future me i know you definely will : so i put the event listners in the function by 
 // understanding that i am deleteing the previous html by putting em in a function 
 // so if i am deleting the prev data and updating it with new html i need to
 // add those event listners for this currently updated html tooo thats the logic;

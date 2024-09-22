@@ -126,6 +126,9 @@ a{
     margin: .35rem;
     background: var(--primary-white);
 }
+.fa-shopping-cart {
+    font-size: 1.5rem;
+  }
 
 /*---hero-section---*/
 .hero-section{
@@ -167,7 +170,6 @@ img{
     text-align: end;
     padding-right: 2rem;
 }
-
 
 
 /*---slider---*/

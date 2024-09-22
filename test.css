@@ -1,0 +1,24 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.grid-cards-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    width: 100%;
+    height: 100%;
+}
+
+.card-product{
+    height: 20rem;
+}
+
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
