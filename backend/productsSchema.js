@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
   image: {
     type: String,
-    required: true,  // Fixing the typo
+    required: true, 
   },
 
   name: {
     type: String,
-    required: true,  // Fixing the typo
+    required: true,
   },
 
   rating: {
@@ -26,13 +26,13 @@ const productSchema = new mongoose.Schema({
 
   priceCents: {
     type: Number,
-    default: 0,  // Fixing the typo
+    default: 0,  
     required: true,
   },
 
   keywords: {
-    type: [String],  // Defining it as an array of strings
-    enum: ["women", "men"],  // Correcting enum usage
+    type: [String],  
+    enum: ["women", "men"],  
     required: true, 
   }
 });

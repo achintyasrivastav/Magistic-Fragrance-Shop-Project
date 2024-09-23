@@ -6,7 +6,7 @@ class Product{
   priceCents;
 
   constructor(productDetail){
-    this.id = productDetail.id;
+    this.id = productDetail._id;
     this.image = productDetail.image;
     this.name = productDetail.name;
     this.rating = productDetail.rating;
@@ -14,7 +14,6 @@ class Product{
   }
 }
 
-/*
 export let products = [];
 
 export function loadProducts(displayProducts){
@@ -23,18 +22,16 @@ export function loadProducts(displayProducts){
   xhr.addEventListener('load', () => {
     products = JSON.parse(xhr.response).map((productDetail) => {
       return new Product(productDetail);
-    });
-
-    console.log(products);
+  });
 
     displayProducts();
   });
 
   xhr.open('GET', 'http://localhost:3003/productlist');
   xhr.send();
-}*/
+}
 
-
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -649,4 +646,4 @@ export const products = [
   }
 ].map((productDetail) => {
   return new Product(productDetail);
-})
+})*/

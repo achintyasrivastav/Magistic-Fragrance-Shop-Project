@@ -1,12 +1,10 @@
-import { cart, removeFromCart, updateCartQuantity, updateDeliveryDate} from "../../data/cart.js";
-import{ products } from "../../data/products.js"
+import { cart, removeFromCart, updateCartQuantity, updateDeliveryDate} from "../../data/cart-backend.js";
+import{ loadProducts, products} from "../../data/products.js"
 import { formatCurrency } from "../utils/money.js";
-import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from ' https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 
-hello();
 const today = dayjs();
 const nday = today.add(7, 'day');
 console.log(nday);
@@ -14,6 +12,8 @@ console.log(nday.format('dddd, MMMM D'));
 
 
 export function renderOrderSummary() {
+
+    if(!cart) return;
 
     let cartSummary = '';
     cart.forEach((cartItem) => {
@@ -26,6 +26,8 @@ export function renderOrderSummary() {
                 matchingProduct = product;
             }
         });
+
+        console.log(matchingProduct);
 
         let deliveryOptionId = cartItem.deliveryOptionId;
         let deliveryData = '';
@@ -139,6 +141,8 @@ export function renderOrderSummary() {
 
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
             container.remove();
+
+            renderOrderSummary();
             renderPaymentSummary();
         });
 
@@ -173,6 +177,7 @@ export function renderOrderSummary() {
             console.log(deliveryOptionId);
 
             updateDeliveryDate(productId, deliveryOptionId);
+
             renderOrderSummary();
             renderPaymentSummary();
 
@@ -195,8 +200,6 @@ export function renderOrderSummary() {
         });
     });
 }
-
-renderOrderSummary();
 // maybe u forget future me i know you definely will : so i put the event listners in the function by 
 // understanding that i am deleteing the previous html by putting em in a function 
 // so if i am deleting the prev data and updating it with new html i need to
