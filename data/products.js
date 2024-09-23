@@ -27,7 +27,7 @@ export function loadProducts(displayProducts){
     displayProducts();
   });
 
-  xhr.open('GET', 'http://localhost:3003/productlist');
+  xhr.open('GET', 'https://magistic-fragrance-shop-project.onrender.com/productlist');
   xhr.send();
 }
 

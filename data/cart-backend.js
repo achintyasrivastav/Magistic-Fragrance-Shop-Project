@@ -11,7 +11,7 @@ export function loadProductsFromCart(displayCart){
         displayCart();
     });
   
-    xhr.open('GET', 'http://localhost:3003/cartlist');
+    xhr.open('GET', 'https://magistic-fragrance-shop-project.onrender.com/cartlist');
     xhr.send();
 }
 
@@ -75,7 +75,7 @@ function updateCartQuantityBackend(productId, oldQuantity){
         console.log(cart);
     });
 
-    xhr.open('PUT', `http://localhost:3003/cartlist/${productId}/quantity`);
+    xhr.open('PUT', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/quantity`);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     const newQuantity = oldQuantity + 1;
@@ -90,7 +90,7 @@ function updateDeliveryDateBackend(productId, deliveryOptionId){
         console.log(cart);
     });
 
-    xhr.open('PUT', `http://localhost:3003/cartlist/${productId}/delivery`);
+    xhr.open('PUT', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/delivery`);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     const dataToUpdate = { deliveryOptionId: deliveryOptionId };
@@ -104,7 +104,7 @@ function deleteFromCartBackend(productId){
         console.log(cart);
     });
 
-    xhr.open('DELETE', `http://localhost:3003/cartlist/${productId}`);
+    xhr.open('DELETE', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}`);
     xhr.send();
 }
 
@@ -115,7 +115,7 @@ function addToCartBackend(productId, quantity, deliveryOptionId){
         console.log(cart);
     });
 
-    xhr.open('POST', 'http://localhost:3003/cartlist');
+    xhr.open('POST', 'https://magistic-fragrance-shop-project.onrender.com/cartlist');
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     const dataToSend = {

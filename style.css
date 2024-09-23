@@ -286,6 +286,7 @@ h2{
 h4,.price{
     color: var(--primary-white);
     font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 .card-info{
