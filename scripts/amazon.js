@@ -1,5 +1,5 @@
 import { products, loadProducts} from '../data/products.js';
-import {cart, addToCart} from '../data/cart-backend.js';
+import {cart, addToCart, loadProductsFromCart} from '../data/cart-backend.js';
 import { formatCurrency } from './utils/money.js';
 
 loadProducts(renderProductsGrid); 
@@ -47,25 +47,17 @@ function renderProductsGrid(){
     document.querySelector('.js-products-grid')
      .innerHTML = productHTML;
 
-    function updateCartQuantity(){
-        let cartQuantity = 0;
-        cart.forEach((cartItem) => {
-            console.log(cartItem);
-            cartQuantity += cartItem.quantity;
-        });
-
-        document.querySelector('.cart-quantity')
-         .innerHTML = cartQuantity;
-    }
 
     document.querySelectorAll('.js-add-to-cart')
      .forEach((button) => {
         button.addEventListener('click', () =>{
             
             const productId = button.dataset.productId;
+
+            loadProductsFromCart(() => {
+                addToCart(productId);
+            });
             
-            addToCart(productId);
-            updateCartQuantity();
             
         });
     
