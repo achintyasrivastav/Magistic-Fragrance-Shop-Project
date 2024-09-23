@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 
+require('dotenv').config();
+const PORT = process.env.PORT || 3003;
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -25,6 +27,6 @@ app.get('/', function (req, res){
 app.use('/productlist', productRoutes);
 app.use('/cartlist', cartItemRoutes);
 
-app.listen(3003, () => {
+app.listen(PORT, () => {
     console.log('Server is running on port 3003');
 });
