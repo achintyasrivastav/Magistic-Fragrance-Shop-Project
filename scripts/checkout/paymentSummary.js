@@ -5,7 +5,8 @@ import { deliveryOptions } from "../../data/deliveryOptions.js";
 
 
 export function renderPaymentSummary(){
-      loadProductsFromCart(() => {
+      loadProductsFromCart(() =>  {
+          if (!cart || cart.length === 0) return;
   
           let totalProductPrice = 0;
           let totalShippingPrice = 0;

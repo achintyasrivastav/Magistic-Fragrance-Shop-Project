@@ -12,7 +12,7 @@ console.log(nday.format('dddd, MMMM D'));
 
 
 export function renderOrderSummary() {
-    loadProductsFromCart(cart =>  {
+    loadProductsFromCart(() =>  {
         if (!cart || cart.length === 0) return;
 
         let cartSummary = '';
@@ -148,7 +148,10 @@ export function renderOrderSummary() {
                 const container = document.querySelector(`.js-cart-item-container-${productId}`);
                 container.remove();
 
-                loadProductsFromCart(renderOrderSummary);
+                loadProductsFromCart(() => {
+                    renderOrderSummary();
+                    renderPaymentSummary();
+                });
             });
 
         });
@@ -163,7 +166,10 @@ export function renderOrderSummary() {
                 console.log(productId);
                 updateCartQuantity(productId);
 
-                loadProductsFromCart(renderOrderSummary);
+                loadProductsFromCart(() => {
+                    renderOrderSummary();
+                    renderPaymentSummary();
+                });
 
                 console.log('OK');
             });
