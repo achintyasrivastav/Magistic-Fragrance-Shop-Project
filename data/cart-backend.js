@@ -1,21 +1,19 @@
 export let cart = [];
 
-//now trying it from the backend 
-export function loadProductsFromCart(displayCart) {
+export function loadProductsFromCart(callback) {
     fetch('https://magistic-fragrance-shop-project.onrender.com/cartlist')
         .then(response => response.json())
         .then(cart => {
             console.log(cart);
-            displayCart();
+            if (typeof callback === "function") {
+                callback(cart); 
+                // Call the callback with the fetched cart data
+            }
         })
         .catch(error => {
             console.error('Error fetching cart data:', error);
         });
 }
-
-
-loadProductsFromCart();
-
 
 export function addToCart(productId){
     let matchingItem;
