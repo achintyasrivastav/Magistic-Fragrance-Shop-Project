@@ -332,7 +332,10 @@
 
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
     <script>
+
         const hamburger_icon = document.querySelector('.js-hamburger');
         const menu_list = document.querySelector('.js-navlist');
 
@@ -341,6 +344,37 @@
 
             menu_list.classList.toggle('navlist-active');
         });
+
+        
+        window.addEventListener("load", () => {
+            // Animate the heading (left-container)
+            gsap.from(".left-container h1", {
+            opacity: 0,
+            x: -100,  // Slide in from the left
+            duration: 2,
+            ease: "power2.out",
+            });
+        
+            // Animate the perfume image (middle-container)
+            gsap.from(".middle-container img", {
+            opacity: 0,
+            scale: 0.8,  // Scale up animation
+            duration: 3,
+            ease: "elastic.out(1, 0.5)",  // Elastic effect for bounce
+            delay: 1,  // Start after heading animation
+            });
+        
+            // Animate the paragraph and button (right-container)
+            gsap.from(".right-container .para", {
+            opacity: 0,
+            x: 100,  // Slide in from the right
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.3,  // Start after image animation
+            });
+        });
+        
+          
 
     </script>
     

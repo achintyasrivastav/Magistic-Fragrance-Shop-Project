@@ -1,19 +1,18 @@
 export let cart = [];
 
 //now trying it from the backend 
-export function loadProductsFromCart(displayCart){
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('load', () => {
-        cart = JSON.parse(xhr.response);
-
-        console.log(cart);
-        displayCart();
-    });
-  
-    xhr.open('GET', 'https://magistic-fragrance-shop-project.onrender.com/cartlist');
-    xhr.send();
+export function loadProductsFromCart(displayCart) {
+    fetch('https://magistic-fragrance-shop-project.onrender.com/cartlist')
+        .then(response => response.json())
+        .then(cart => {
+            console.log(cart);
+            displayCart();
+        })
+        .catch(error => {
+            console.error('Error fetching cart data:', error);
+        });
 }
+
 
 loadProductsFromCart();
 
@@ -68,61 +67,80 @@ export function updateDeliveryDate(productId, deliveryOptionId){
 }
 
 //
-function updateCartQuantityBackend(productId, oldQuantity){
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('load', () => {
-        console.log(cart);
-    });
-
-    xhr.open('PUT', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/quantity`);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
+function updateCartQuantityBackend(productId, oldQuantity) {
     const newQuantity = oldQuantity + 1;
     const dataToUpdate = { quantity: newQuantity };
-    xhr.send(JSON.stringify(dataToUpdate));
+
+    fetch(`https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/quantity`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToUpdate),
+    })
+    .then(response => response.json())
+    .then(updatedCart => {
+        console.log(updatedCart);
+    })
+    .catch(error => {
+        console.error('Error updating cart quantity:', error);
+    });
 }
 
-function updateDeliveryDateBackend(productId, deliveryOptionId){
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('load', () => {
-        console.log(cart);
-    });
 
-    xhr.open('PUT', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/delivery`);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
+function updateDeliveryDateBackend(productId, deliveryOptionId) {
     const dataToUpdate = { deliveryOptionId: deliveryOptionId };
-    xhr.send(JSON.stringify(dataToUpdate));
+
+    fetch(`https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}/delivery`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToUpdate),
+    })
+    .then(response => response.json())
+    .then(updatedCart => {
+        console.log(updatedCart);
+    })
+    .catch(error => {
+        console.error('Error updating delivery date:', error);
+    });
 }
 
-function deleteFromCartBackend(productId){
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('load', () => {
-        console.log(cart);
-    });
 
-    xhr.open('DELETE', `https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}`);
-    xhr.send();
+function deleteFromCartBackend(productId) {
+    fetch(`https://magistic-fragrance-shop-project.onrender.com/cartlist/${productId}`, {
+        method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(updatedCart => {
+        console.log(updatedCart);
+    })
+    .catch(error => {
+        console.error('Error deleting from cart:', error);
+    });
 }
 
-function addToCartBackend(productId, quantity, deliveryOptionId){
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('load', () => {
-        console.log(cart);
-    });
 
-    xhr.open('POST', 'https://magistic-fragrance-shop-project.onrender.com/cartlist');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
+function addToCartBackend(productId, quantity, deliveryOptionId) {
     const dataToSend = {
         productId: productId,
         quantity: quantity,
         deliveryOptionId: deliveryOptionId,
     };
 
-    xhr.send(JSON.stringify(dataToSend));
+    fetch('https://magistic-fragrance-shop-project.onrender.com/cartlist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+    })
+    .then(response => response.json())
+    .then(updatedCart => {
+        console.log(updatedCart);
+    })
+    .catch(error => {
+        console.error('Error adding to cart:', error);
+    });
 }

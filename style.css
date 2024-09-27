@@ -434,6 +434,7 @@ h3{
     }
     .navlist-active{
         transform: translateX(0);
+        z-index: 5;
     }
     .navlinks{
         font-size: 1.1rem;

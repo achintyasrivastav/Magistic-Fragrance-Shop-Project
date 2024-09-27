@@ -16,20 +16,15 @@ class Product{
 
 export let products = [];
 
-export function loadProducts(displayProducts){
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('load', () => {
-    products = JSON.parse(xhr.response).map((productDetail) => {
-      return new Product(productDetail);
-  });
-
-    displayProducts();
-  });
-
-  xhr.open('GET', 'https://magistic-fragrance-shop-project.onrender.com/productlist');
-  xhr.send();
+export function loadProducts(displayProducts) {
+  fetch('https://magistic-fragrance-shop-project.onrender.com/productlist')
+    .then(response => response.json())
+    .then(productDetails => {
+      products = productDetails.map(productDetail => new Product(productDetail));
+      displayProducts();
+    });
 }
+
 
 /*
 export const products = [
